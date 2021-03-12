@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fizz</string>
+    <string name="btn_go_to_exercise">></string>
+</resources>
