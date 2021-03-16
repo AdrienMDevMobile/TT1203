@@ -43,7 +43,7 @@ class RecycleViewTest {
     }
 
     /**
-     * Recycler view a bien un itemù 4
+     * Recycler view a bien un item 4
      */
     @Test
     fun test_is_element4Visible(){

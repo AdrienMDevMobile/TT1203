@@ -1,11 +1,12 @@
 package com.micheladrien.tt1203.exerciseList
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.lifecycle.*
 import com.micheladrien.tt1203.data.ExerciseListProvider
 import com.micheladrien.tt1203.data.model.ExerciseList
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 import javax.inject.Inject
 
@@ -15,6 +16,14 @@ class ExerciseListViewModel @Inject constructor (private val exerciseListProvide
     val exercisesLiveData: LiveData<ExerciseList> = _exercisesLiveData
 
     init{
-        _exercisesLiveData.postValue(exerciseListProvider.getExerciseList())
+        Log.d("testAmi", "Init VM")
+
+        viewModelScope.launch(Dispatchers.Main){
+            Log.d("testAmi", "Launch scope")
+            _exercisesLiveData.postValue(exerciseListProvider.getExerciseList())
+            //val exList : ExerciseList = ApiCallClass(applicationContext).getListEx()
+            //for(exercise in exList.data) mTxtViewResult.append("\n 1 id : " + exercise.id + " url : " + exercise.image_url + " name : " + exercise.name)
+        }
+
     }
 }

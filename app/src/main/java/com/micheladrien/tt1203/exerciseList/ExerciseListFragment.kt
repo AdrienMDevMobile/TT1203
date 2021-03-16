@@ -36,8 +36,10 @@ class ExerciseListFragment : Fragment() {
         _binding = FragmentListExerciseBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        Log.d("testAmi", "nous sommes avant le recyclerView")
         recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_exercise).apply {this.setHasFixedSize(true)}
 
+        Log.d("testAmi", "nous sommes avant le observe")
         listViewModel.exercisesLiveData.observe(viewLifecycleOwner, {
 
             //Dans l'observe : ecrase et refait le RecyclerViewAdapter
@@ -49,6 +51,8 @@ class ExerciseListFragment : Fragment() {
 
         })
 
+
+        Log.d("testAmi", "avant root")
         return root
 
     }

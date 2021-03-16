@@ -5,7 +5,7 @@ import com.micheladrien.tt1203.data.model.ExerciseList
 import javax.inject.Inject
 
 class SampleExerciseListProvider @Inject constructor() : ExerciseListProvider {
-    override fun getExerciseList(): ExerciseList {
+    override suspend fun getExerciseList(): ExerciseList {
         val list = ArrayList<Exercise>()
         list.add(0, Exercise(0, "image0", "name0"))
         list.add(1, Exercise(1, "image1", "name1"))
