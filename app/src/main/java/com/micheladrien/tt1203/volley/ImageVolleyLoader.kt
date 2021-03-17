@@ -1,15 +1,13 @@
 package com.micheladrien.tt1203.volley
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.collection.LruCache
 import com.android.volley.Cache
 import com.android.volley.Network
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.BasicNetwork
-import com.android.volley.toolbox.DiskBasedCache
-import com.android.volley.toolbox.HurlStack
-import com.android.volley.toolbox.ImageLoader
+import com.android.volley.toolbox.*
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -17,10 +15,6 @@ class ImageVolleyLoader @Inject constructor(private val requestQueue: RequestQue
     //@ApplicationContext private val context: Context,
     //private var requestQueue: RequestQueue?
     private val imageLoader: ImageLoader
-
-    override fun getImageLoader(): ImageLoader {
-        return imageLoader
-    }
 
     /*
     private fun getRequestQueue(): RequestQueue {
@@ -61,4 +55,19 @@ class ImageVolleyLoader @Inject constructor(private val requestQueue: RequestQue
             return customVolleyRequest
         }
     } */
+
+    @SuppressLint("ResourceAsColor")
+    override fun loadImage(imageHolder : NetworkImageView, url : String) {
+
+        if (url == "") {
+            //Toast.makeText(this, "Please enter a URL", Toast.LENGTH_LONG).show()
+            imageHolder.setImageResource(android.R.drawable.ic_dialog_alert)
+            return
+        }
+        //val imageLoader = context?.let { it1 -> ImageVolleyLoader.getInstance(it1)?.imageLoader }
+        imageLoader.get(url, ImageLoader.getImageListener(imageHolder,
+                android.R.drawable.ic_menu_report_image, android.R.drawable.ic_dialog_alert))
+        imageHolder.setImageUrl(url, imageLoader)
+
+    }
 }
