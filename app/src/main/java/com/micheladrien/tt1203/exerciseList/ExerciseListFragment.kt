@@ -1,7 +1,6 @@
 package com.micheladrien.tt1203.exerciseList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,18 +31,15 @@ class ExerciseListFragment : Fragment() {
         //je suis obligé de mettre l'activité main comme propriétaire
         //relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
-        Log.d("testAmi", "nous sommes dans le onCreateView")
         _binding = FragmentListExerciseBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        Log.d("testAmi", "nous sommes avant le recyclerView")
         recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_exercise).apply {this.setHasFixedSize(true)}
 
-        Log.d("testAmi", "nous sommes avant le observe")
         listViewModel.exercisesLiveData.observe(viewLifecycleOwner, {
 
             //Dans l'observe : ecrase et refait le RecyclerViewAdapter
-            viewAdapter = ExerciseListAdapter(it)
+            viewAdapter = ExerciseListAdapter(context, it)
             // use a linear layout manager
             recyclerView.layoutManager = LinearLayoutManager(context)
             // specify an viewAdapter (see also next example)
@@ -51,8 +47,6 @@ class ExerciseListFragment : Fragment() {
 
         })
 
-
-        Log.d("testAmi", "avant root")
         return root
 
     }

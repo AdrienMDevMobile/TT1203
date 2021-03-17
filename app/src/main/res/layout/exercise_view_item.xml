@@ -15,12 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/img_exercise"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            tools:text="Image Exercise" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp" />
 
 
         <TextView
