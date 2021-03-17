@@ -9,6 +9,9 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import com.micheladrien.tt1203.data.APIExerciseListProvider
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
@@ -38,7 +41,9 @@ class APICallTest {
 
     @Test
     fun TestAPIExerciseListProvider() = runBlocking {
-        val prov = APIExerciseListProvider(context)
+        val rq : RequestQueue = Volley.newRequestQueue(context)
+        val gs : Gson = Gson()
+        val prov = APIExerciseListProvider(rq, gs)
         val results = prov.getExerciseList()
         // Assert pages equals, is, etc.
         assertTrue(results.data.size > 0)

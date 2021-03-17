@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:id="@+id/ExerciselinearLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,8 +17,8 @@
 
         <TextView
             android:id="@+id/img_exercise"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:fontFamily="monospace"
             tools:text="Image Exercise" />
 
@@ -26,14 +26,14 @@
         <TextView
             android:id="@+id/tv_exercise_name"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="monospace"
             tools:text="Name Exercise" />
 
         <Button
             style="@android:style/Widget.DeviceDefault.Button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/go_to_ex_margin_medium"
             android:layout_marginRight="@dimen/go_to_ex_margin_medium"
             android:background="@null"
