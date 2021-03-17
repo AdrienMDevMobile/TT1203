@@ -31,4 +31,5 @@ object  AppProvideModule {
     fun provideGson(): Gson {
         return Gson()
     }
+
 }

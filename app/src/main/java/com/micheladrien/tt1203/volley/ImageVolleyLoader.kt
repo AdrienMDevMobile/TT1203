@@ -10,12 +10,20 @@ import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.ImageLoader
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class ImageVolleyRequest private constructor(private val context: Context) {
-    private var requestQueue: RequestQueue?
-    val imageLoader: ImageLoader
+class ImageVolleyLoader @Inject constructor(private val requestQueue: RequestQueue) : myImageLoader {
+    //@ApplicationContext private val context: Context,
+    //private var requestQueue: RequestQueue?
+    private val imageLoader: ImageLoader
 
-    fun getRequestQueue(): RequestQueue {
+    override fun getImageLoader(): ImageLoader {
+        return imageLoader
+    }
+
+    /*
+    private fun getRequestQueue(): RequestQueue {
         if (requestQueue == null) {
             val cache: Cache = DiskBasedCache(context.cacheDir, 10 * 1024 * 1024)
             val network: Network = BasicNetwork(HurlStack())
@@ -23,23 +31,10 @@ class ImageVolleyRequest private constructor(private val context: Context) {
             requestQueue!!.start()
         }
         return requestQueue!!
-    }
-
-    companion object {
-        private var customVolleyRequest: ImageVolleyRequest? = null
-        //private val context: Context
-
-        @Synchronized
-        fun getInstance(context: Context): ImageVolleyRequest? {
-            if (customVolleyRequest == null) {
-                customVolleyRequest = ImageVolleyRequest(context)
-            }
-            return customVolleyRequest
-        }
-    }
+    }*/
 
     init {
-        requestQueue = getRequestQueue()
+        //requestQueue = getRequestQueue()
         imageLoader = ImageLoader(requestQueue,
                 object : ImageLoader.ImageCache {
                     private val cache: LruCache<String, Bitmap> = LruCache<String, Bitmap>(20)
@@ -52,4 +47,18 @@ class ImageVolleyRequest private constructor(private val context: Context) {
                     }
                 })
     }
+
+    /*
+    companion object {
+        private var customVolleyRequest: ImageVolleyLoader? = null
+        //private val context: Context
+
+
+        fun getInstance(context: Context): ImageVolleyLoader? {
+            if (customVolleyRequest == null) {
+                customVolleyRequest = ImageVolleyLoader(context)
+            }
+            return customVolleyRequest
+        }
+    } */
 }

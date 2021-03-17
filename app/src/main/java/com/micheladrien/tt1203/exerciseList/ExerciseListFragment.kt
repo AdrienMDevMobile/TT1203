@@ -10,12 +10,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.tt1203.R
 import com.micheladrien.tt1203.databinding.FragmentListExerciseBinding
+import com.micheladrien.tt1203.volley.myImageLoader
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ExerciseListFragment : Fragment() {
 
     private val listViewModel : ExerciseListViewModel by viewModels()
+
+    @Inject
+    lateinit var myImageLoader : myImageLoader
 
     private var _binding: FragmentListExerciseBinding? = null
     private val binding get() = _binding!!
@@ -39,7 +44,7 @@ class ExerciseListFragment : Fragment() {
         listViewModel.exercisesLiveData.observe(viewLifecycleOwner, {
 
             //Dans l'observe : ecrase et refait le RecyclerViewAdapter
-            viewAdapter = ExerciseListAdapter(context, it)
+            viewAdapter = ExerciseListAdapter(it, myImageLoader)
             // use a linear layout manager
             recyclerView.layoutManager = LinearLayoutManager(context)
             // specify an viewAdapter (see also next example)

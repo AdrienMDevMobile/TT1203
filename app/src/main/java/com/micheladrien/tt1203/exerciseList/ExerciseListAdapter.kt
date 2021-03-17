@@ -3,16 +3,16 @@ package com.micheladrien.tt1203.exerciseList
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.NetworkImageView
 import com.micheladrien.tt1203.R
 import com.micheladrien.tt1203.data.model.ExerciseList
-import com.micheladrien.tt1203.volley.ImageVolleyRequest
+import com.micheladrien.tt1203.volley.ImageVolleyLoader
+import com.micheladrien.tt1203.volley.myImageLoader
 
 
-class ExerciseListAdapter(private val context: Context?, private val exerciseList: ExerciseList) : RecyclerView.Adapter<ExerciseListVH>()  {
+class ExerciseListAdapter(private val exerciseList: ExerciseList, private val myImageLoader: myImageLoader) : RecyclerView.Adapter<ExerciseListVH>()  {
 
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.
@@ -34,10 +34,8 @@ class ExerciseListAdapter(private val context: Context?, private val exerciseLis
         loadImage(holder.image, exerciseList.data[position].image_url)
     }
 
-    //RecyclerView calls this method to get the size of the data set.
-    // For example, in an address book app, this might be the total number of addresses.
-    // RecyclerView uses this to determine when there are no more items that can be displayed.
     override fun getItemCount() = exerciseList.data.size
+
 
     private fun loadImage(imageHolder : NetworkImageView, url : String) {
         if (url == "") {
@@ -45,10 +43,10 @@ class ExerciseListAdapter(private val context: Context?, private val exerciseLis
             imageHolder.setImageResource(android.R.drawable.ic_dialog_alert)
             return
         }
-        val imageLoader = context?.let { it1 -> ImageVolleyRequest.getInstance(it1)?.imageLoader }
-        imageLoader?.get(url, ImageLoader.getImageListener(imageHolder,
+        //val imageLoader = context?.let { it1 -> ImageVolleyLoader.getInstance(it1)?.imageLoader }
+        myImageLoader.getImageLoader().get(url, ImageLoader.getImageListener(imageHolder,
                 android.R.drawable.ic_menu_report_image, android.R.drawable.ic_dialog_alert))
-        imageHolder.setImageUrl(url, imageLoader)
+        imageHolder.setImageUrl(url, myImageLoader.getImageLoader())
     }
 
 
