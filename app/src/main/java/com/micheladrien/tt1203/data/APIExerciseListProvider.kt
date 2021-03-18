@@ -9,9 +9,11 @@ import com.google.gson.reflect.TypeToken
 import com.micheladrien.tt1203.data.model.Exercise
 import com.micheladrien.tt1203.data.model.ExerciseList
 import com.micheladrien.tt1203.volley.URLs
+import com.micheladrien.tt1203.volley.internetConnection.Variables
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import org.json.JSONObject
+import java.lang.Thread.sleep
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -23,7 +25,6 @@ class APIExerciseListProvider @Inject constructor(private val queue: RequestQueu
 
     /*
     val queue : RequestQueue by lazy {
-        Log.d("TestAmi", "Init VM")
         Volley.newRequestQueue(context)
     } */
 
@@ -33,6 +34,11 @@ class APIExerciseListProvider @Inject constructor(private val queue: RequestQueu
         val URL: String = URLs.BASE_URL + URLs.LIST_URL
 
         val typeExerciseList = object : TypeToken<ExerciseList>() {}.type
+
+        //Wait for the Network to come.
+        while (!Variables.isNetworkConnected){
+            sleep(5000)
+        }
 
         return suspendCancellableCoroutine { continuation ->
             try {
