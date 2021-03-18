@@ -13,16 +13,16 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.micheladrien.tt1203.data.APIExerciseListProvider
-import com.micheladrien.tt1203.volley.internetConnection.NetworkMonitor
 import com.micheladrien.tt1203.volley.internetConnection.Variables
-import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Test
 
 
+/**
+ * TEST EXAMPLES I WROTE USING ESPRESSO AND HILT'S DI
+ */
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class APICallTest {

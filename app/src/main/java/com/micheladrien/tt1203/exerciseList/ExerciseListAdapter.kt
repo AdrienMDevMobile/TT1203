@@ -1,14 +1,10 @@
 package com.micheladrien.tt1203.exerciseList
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.ImageLoader
-import com.android.volley.toolbox.NetworkImageView
 import com.micheladrien.tt1203.R
 import com.micheladrien.tt1203.data.model.ExerciseList
-import com.micheladrien.tt1203.volley.ImageVolleyLoader
 import com.micheladrien.tt1203.volley.myImageLoader
 
 

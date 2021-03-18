@@ -1,3 +1,7 @@
-# TT1203
+# TT1203 README
 
-Note : NetworkManagement is not handled under API 21
+<img src="https://i.imgur.com/a/qUzDYvg">
+Charge la liste des exercises et affiche leurs images avec **Volley**, **Gson** et **RecyclerView**
+Le POC est développé en **Kotlin**, suit une structure **MVVM**, **Single-Activity App** et utilise la **Dependency Injection** avec **Hilt**
+Le threading est géré avec **Coroutine**, la coroutine attend en arrière plan l'arrivé du reseau pour lancer la requête Volley.
+Note : L'application est compatible jusqu'à API 19. Toutefois, l'attente du reseau n'est actuellement pas gérée sous API 19, la requête Volley se fera au lancement de l'app.

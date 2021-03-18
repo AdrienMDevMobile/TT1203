@@ -18,7 +18,9 @@ import com.micheladrien.tt1203.exerciseList.ExerciseListVH
 import com.micheladrien.tt1203.util.EspressoIdlingRessource
 import org.junit.*
 
-
+/**
+ * TEST EXAMPLES I WROTE USING ESPRESSO AND HILT'S DI
+ */
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class RecycleViewTest {

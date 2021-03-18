@@ -1,14 +1,10 @@
 package com.micheladrien.tt1203.volley
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Bitmap
 import androidx.collection.LruCache
-import com.android.volley.Cache
-import com.android.volley.Network
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.*
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class ImageVolleyLoader @Inject constructor(private val requestQueue: RequestQueue) : myImageLoader {

@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 class TestImageLoader @Inject constructor() : myImageLoader {
     override fun loadImage(imageHolder: NetworkImageView, url: String) {
-        imageHolder.setImageResource(android.R.drawable.ic_media_play)
+        //imageHolder.setImageResource(android.R.drawable.ic_media_play)
+        imageHolder.setDefaultImageResId(android.R.drawable.ic_media_play)
     }
 }
