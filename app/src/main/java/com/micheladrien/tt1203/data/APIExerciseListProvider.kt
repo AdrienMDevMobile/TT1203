@@ -1,5 +1,6 @@
 package com.micheladrien.tt1203.data
 
+import android.os.Build
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -35,10 +36,8 @@ class APIExerciseListProvider @Inject constructor(private val queue: RequestQueu
 
         val typeExerciseList = object : TypeToken<ExerciseList>() {}.type
 
-        //Wait for the Network to come.
-        while (!Variables.isNetworkConnected){
-            sleep(5000)
-        }
+
+
 
         return suspendCancellableCoroutine { continuation ->
             try {

@@ -13,6 +13,11 @@ open class BaseApplication : Application(){
             NetworkMonitor(this).startNetworkCallback()
         }
         else {
+            /**
+             * Under 21, Callback manager does not exists. ConnectivityManager needs to be used. But it cannot do any callbacks from the background.
+             * Here are some work around I tried implementing : create a second Network monitor that would use CM in an until CM returns that the connectivity is on.
+             * On creation of the application, either the class NetworkMonitor using CallbackManager  or the one using Connectivity manager.
+             */
             Variables.isNetworkConnected = true
         }
     }

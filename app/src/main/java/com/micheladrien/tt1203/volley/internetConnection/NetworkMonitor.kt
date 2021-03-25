@@ -30,7 +30,6 @@ constructor(private val application: Application) {
             }
         }
         else {
-            //Nous ne gerons pas pour moins de 21
                 Variables.isNetworkConnected = true
         }
     }
